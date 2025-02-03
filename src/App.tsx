@@ -1,7 +1,7 @@
 import './App.css';
-import TodoApp from './components/To-do-app.js';
+import TodoApp from './components/To-do-app';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <TodoApp/>

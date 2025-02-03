@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-function TodoApp() {
-  const [tasks, setTasks] = useState([]);
-  const [input, setInput] = useState('');
-  const [showLimitPopup, setShowLimitPopup] = useState(false);
-  const [showEmptyTaskPopup, setShowEmptyTaskPopup] = useState(false);
+interface Task {
+  text: string;
+  checked: boolean;
+}
+
+const TodoApp: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [input, setInput] = useState<string>('');
+  const [showLimitPopup, setShowLimitPopup] = useState<boolean>(false);
+  const [showEmptyTaskPopup, setShowEmptyTaskPopup] = useState<boolean>(false);
 
   const handleClosePopup = () => {
     setShowLimitPopup(false);
     setShowEmptyTaskPopup(false);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
     handleClosePopup();
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     addTask();
   };
@@ -24,7 +29,7 @@ function TodoApp() {
   const addTask = () => {
     if (input.trim() !== '') {
       if (tasks.length < 5) {
-        const newTasks = [...tasks, { text: input, checked: false }];
+        const newTasks: Task[] = [...tasks, { text: input, checked: false }];
         setTasks(newTasks);
         saveTasks(newTasks);
         setInput('');
@@ -37,14 +42,14 @@ function TodoApp() {
     }
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (index: number) => {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks(newTasks);
     saveTasks(newTasks);
   };
 
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (index: number) => {
     const newTasks = [...tasks];
     newTasks[index] = {
       ...newTasks[index],
@@ -54,7 +59,7 @@ function TodoApp() {
     saveTasks(newTasks);
   };
 
-  const saveTasks = (newTasks) => {
+  const saveTasks = (newTasks: Task[]) => {
     localStorage.setItem('tasks', JSON.stringify(newTasks));
   };
 
@@ -99,10 +104,9 @@ function TodoApp() {
             <button className="delete" onClick={() => handleDelete(index)}>Delete</button>
           </li>
         ))}
-    </ul>
-
+      </ul>
     </div>
   );
-}
+};
 
 export default TodoApp;
