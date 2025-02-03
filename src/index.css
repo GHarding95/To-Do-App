@@ -1,0 +1,193 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+/* Form Layout */
+.task-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.task-form input {
+  flex: 1;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.task-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.task-form button {
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Task List */
+ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 500px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item {
+  display: flex;
+  align-items: flex-start; 
+  width: 100%;
+}
+
+.task-item input[type="checkbox"] {
+  appearance: none; 
+  width: 24px; 
+  height: 24px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Checkbox checked state */
+.task-item input[type="checkbox"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Custom checkmark */
+.task-item input[type="checkbox"]::before {
+  content: "✔";
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show checkmark when checked */
+.task-item input[type="checkbox"]:checked::before {
+  opacity: 1;
+}
+
+
+.task-text {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  word-break: break-word; 
+}
+
+.task-text span {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 10px;
+  text-align: left;
+}
+
+
+span {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+span.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+button.delete {
+  background-color: #dc3545;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}
+
+/* Popup Messages */
+.popup {
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffcccb;
+  border-radius: 5px;
+  color: #dc3545;
+  width: 100%;
+  animation: fadeIn 0.5s ease;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
